@@ -16,6 +16,7 @@ hs_err_pid*
 
 ## Directory-based project format:
 .gradle/
+.gradle/wrapper/
 .idea/
 
 ## File-based project format:
