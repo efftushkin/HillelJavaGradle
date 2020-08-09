@@ -31,21 +31,25 @@ public final class ListDoubleOperations {
         return sum / counter;
     }
 
-    public static Double sumOfSquaresOfPositive(List<Double> numbers) {
+    public static Integer sumOfEvenSquaresOfPositive(List<Integer> numbers) {
         if (numbers == null) {
             return null;
         }
 
         boolean isThereAnyPositive = false;
-        Double sum = Double.valueOf(0);
+        Integer sum = Integer.valueOf(0);
 
-        for (Double number : numbers) {
+        for (Integer number : numbers) {
             if (number == null || number < 0) {
                 continue;
             }
 
-            sum += number * number;
-            isThereAnyPositive = true;
+            int square = number * number;
+
+            if (square % 2 == 0) {
+                sum += square;
+                isThereAnyPositive = true;
+            }
         }
 
         if (isThereAnyPositive) {

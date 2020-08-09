@@ -13,7 +13,7 @@ public class ListDoubleOperationsTest {
     public void meanTest() {
         int ARRAY_SIZE = 1024;
 
-        List<Double> numbers = new ArrayList<>(ARRAY_SIZE);
+        ArrayList<Double> numbers = new ArrayList<>(ARRAY_SIZE);
         Double sum = Double.valueOf(0);
 
         Random random = new Random();
@@ -28,24 +28,29 @@ public class ListDoubleOperationsTest {
     }
 
     @Test
-    public void sumOfSquaresOfPositiveTest() {
+    public void sumOfSquaresOfEvenPositiveTest() {
         int ARRAY_SIZE = 1024;
+        int RANDOM_BOUND = ARRAY_SIZE * 2;
 
-        List<Double> numbers = new ArrayList<>(ARRAY_SIZE);
-        Double sum = Double.valueOf(0);
+        ArrayList<Integer> numbers = new ArrayList<>(ARRAY_SIZE);
+        Integer sum = Integer.valueOf(0);
 
         Random random = new Random();
 
         for (int i = 0; i < ARRAY_SIZE; i++) {
-            double nextDouble = random.nextDouble() - 0.5;
+            int nextInt = random.nextInt(RANDOM_BOUND) - RANDOM_BOUND / 2;
 
-            numbers.add(nextDouble);
+            numbers.add(nextInt);
 
-            if (nextDouble > 0) {
-                sum += nextDouble * nextDouble;
+            if (nextInt > 0) {
+                int square = nextInt * nextInt;
+
+                if (square % 2 == 0) {
+                    sum += square;
+                }
             }
         }
 
-        Assert.assertEquals(sum, ListDoubleOperations.sumOfSquaresOfPositive(numbers), 0.00000000001);
+        Assert.assertEquals(sum, ListDoubleOperations.sumOfEvenSquaresOfPositive(numbers));
     }
 }
